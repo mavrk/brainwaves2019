@@ -1,3 +1,5 @@
+package com.mavrk.brainwaves;
+
 
 import com.mavrk.brainwaves.database.DealsImport;
 import java.math.BigDecimal;
@@ -35,11 +37,11 @@ public class SwiftMT300Parser {
         try {
             SimpleDateFormat format = new SimpleDateFormat("dd/mm/yy", Locale.ENGLISH);
             String s = "";
-            for (int i = 1; i < 101; i++) {
+            for (int i = 25; i < 101; i++) {
                 if (i == 9 || i == 99) {
                     i++;
                 }
-                String fileName = "F:\\brainwave\\Sample data\\ProposedDataforSampleData\\SgProposedDataforSampleData\\" + i + "_message.txt";
+                String fileName = "F:\\brainwave\\Sample data\\CloseFitSampleData\\SgCLoseFitSampleData\\" + i + "_message.txt";
                 File f = new File(fileName);
                 BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
                 s = br.readLine().replace('-', ' ') + '\n';

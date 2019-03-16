@@ -5,17 +5,40 @@
  */
 package com.mavrk.brainwaves;
 
+import com.mavrk.brainwaves.database.SearchDatabase;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author Sanatt Abrol
  */
 public class SwiftGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SwiftGUI
-     */
+    String[] allCurrencies = {"TRY","JPY","USD","AUD","PHP","GBP","EUR","SGD"};
+    String[] columnNames = {"20", "22A", "22C", "24D", "30T", "30V", "32B", "33B", "36",
+            "56", "57A", "57D", "58A", "77H", "82A", "87A","STATUS"};
+    String[] MATCH = {"ALL", "UNMATCHED", "MISMATCHED", "MATCHED", "UNDEF"};
+    SearchDatabase searchDatabase;
+            /**
+             * Creates new form SwiftGUI
+             */
+
     public SwiftGUI() {
         initComponents();
+        AutoMatcher();
+    }
+    
+    void AutoMatcher(){
+        if(searchDatabase == null){
+            searchDatabase = new SearchDatabase();
+        }
+        //searchDatabase.autoMatchDealsSG();
+        //searchDatabase.autoMatchDealsClient();
+        searchDatabase.generateMisMatch();
     }
 
     /**
@@ -27,21 +50,683 @@ public class SwiftGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mismatchFrame = new javax.swing.JFrame();
+        jLabel1 = new javax.swing.JLabel();
+        client20Values = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        sg20 = new javax.swing.JTextField();
+        sg21 = new javax.swing.JTextField();
+        sg82a = new javax.swing.JTextField();
+        sg87a = new javax.swing.JTextField();
+        sg77h = new javax.swing.JTextField();
+        sg22a = new javax.swing.JTextField();
+        sg30T = new javax.swing.JTextField();
+        sg30v = new javax.swing.JTextField();
+        sg36 = new javax.swing.JTextField();
+        sg32b = new javax.swing.JTextField();
+        sg33b = new javax.swing.JTextField();
+        cl30v = new javax.swing.JTextField();
+        cl36 = new javax.swing.JTextField();
+        cl32b = new javax.swing.JTextField();
+        cl33b = new javax.swing.JTextField();
+        cl20 = new javax.swing.JTextField();
+        cl21 = new javax.swing.JTextField();
+        cl82a = new javax.swing.JTextField();
+        cl87a = new javax.swing.JTextField();
+        cl77h = new javax.swing.JTextField();
+        cl22a = new javax.swing.JTextField();
+        cl30t = new javax.swing.JTextField();
+        settlementDateTo = new com.toedter.calendar.JDateChooser();
+        checkSellCurrency = new javax.swing.JCheckBox();
+        checkBuyCurrency = new javax.swing.JCheckBox();
+        checkCounterparty = new javax.swing.JCheckBox();
+        checkRate = new javax.swing.JCheckBox();
+        checkStatus = new javax.swing.JCheckBox();
+        checkBuyAmt = new javax.swing.JCheckBox();
+        checkSellAmt = new javax.swing.JCheckBox();
+        checkReference = new javax.swing.JCheckBox();
+        buyCurrency = new javax.swing.JComboBox<>();
+        checkClient = new javax.swing.JCheckBox();
+        sellCurrency = new javax.swing.JComboBox<>();
+        checkSG = new javax.swing.JCheckBox();
+        statusRequest = new javax.swing.JComboBox<>();
+        buyAmtFrom = new javax.swing.JTextField();
+        sellAmtFrom = new javax.swing.JTextField();
+        sellAmtTo = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableClient = new javax.swing.JTable();
+        buyAmtTo = new javax.swing.JTextField();
+        rateFrom = new javax.swing.JTextField();
+        rateTo = new javax.swing.JTextField();
+        counterpartyBic = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableSG = new javax.swing.JTable();
+        referenceTF = new javax.swing.JTextField();
+        checkTrade = new javax.swing.JCheckBox();
+        tradeDateTo = new com.toedter.calendar.JDateChooser();
+        checkSettlement = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
+        tradeDateFrom = new com.toedter.calendar.JDateChooser();
+        settlementDateFrom = new com.toedter.calendar.JDateChooser();
+        jPanel2 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+
+        mismatchFrame.setMinimumSize(new java.awt.Dimension(650, 490));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("SG:20 vs  ");
+
+        client20Values.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel2.setText("Our Reference");
+
+        jLabel3.setText("Previous Reference");
+
+        jLabel4.setText("Type of Operation");
+
+        jLabel5.setText("Party A");
+
+        jLabel6.setText("Party B");
+
+        jLabel7.setText("ISDA Date");
+
+        jLabel8.setText("Value Date");
+
+        jLabel9.setText("Contract Date");
+
+        jLabel10.setText("Exchange rate");
+
+        jLabel11.setText("We Buy");
+
+        jLabel12.setText("We Sell");
+
+        cl20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cl20ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mismatchFrameLayout = new javax.swing.GroupLayout(mismatchFrame.getContentPane());
+        mismatchFrame.getContentPane().setLayout(mismatchFrameLayout);
+        mismatchFrameLayout.setHorizontalGroup(
+            mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mismatchFrameLayout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(client20Values, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(mismatchFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addGap(85, 85, 85)
+                .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sg33b, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sg32b, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sg36, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sg30v, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sg30T, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sg77h, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sg87a, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sg82a, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sg21, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sg20, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sg22a, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cl33b, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cl32b, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cl36, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cl30v, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cl30t, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cl77h, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cl87a, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cl82a, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cl21, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cl20, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cl22a, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
+        );
+        mismatchFrameLayout.setVerticalGroup(
+            mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mismatchFrameLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(client20Values, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(89, 89, 89)
+                .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mismatchFrameLayout.createSequentialGroup()
+                        .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(sg20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(sg21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(sg22a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(sg82a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(sg87a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(sg77h, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(sg30T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(sg30v, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(sg36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(sg32b, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(mismatchFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(sg33b, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(mismatchFrameLayout.createSequentialGroup()
+                        .addComponent(cl20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cl21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cl22a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(cl82a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cl87a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cl77h, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(cl30t, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cl30v, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cl36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cl32b, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cl33b, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1200, 850));
+
+        checkSellCurrency.setText("Sell Currency");
+
+        checkBuyCurrency.setText("Buy Currency");
+
+        checkCounterparty.setText("Counterpart BIC");
+
+        checkRate.setText("Rate");
+
+        checkStatus.setText("Status");
+
+        checkBuyAmt.setText("Buy Amount");
+
+        checkSellAmt.setText("Sell Amoint");
+
+        checkReference.setText("reference");
+
+        buyCurrency.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        buyCurrency.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buyCurrencyActionPerformed(evt);
+            }
+        });
+
+        checkClient.setText("Client Data");
+
+        sellCurrency.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        checkSG.setText("SG Data");
+        checkSG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkSGActionPerformed(evt);
+            }
+        });
+
+        statusRequest.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Unmatched", "Mismatched", "Matched", " ", " " }));
+
+        buyAmtFrom.setText("0");
+        buyAmtFrom.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buyAmtFromFocusLost(evt);
+            }
+        });
+        buyAmtFrom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buyAmtFromActionPerformed(evt);
+            }
+        });
+
+        sellAmtFrom.setText("0");
+
+        sellAmtTo.setText("0");
+
+        tableClient.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tableClient);
+
+        buyAmtTo.setText("0");
+        buyAmtTo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buyAmtToFocusLost(evt);
+            }
+        });
+
+        rateFrom.setText("0.00");
+
+        rateTo.setText("10.00");
+
+        counterpartyBic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                counterpartyBicActionPerformed(evt);
+            }
+        });
+
+        tableSG.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tableSG.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tableSGMouseReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableSG);
+
+        referenceTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                referenceTFActionPerformed(evt);
+            }
+        });
+
+        checkTrade.setText("Trade Date");
+
+        checkSettlement.setText("Settlement Date");
+
+        jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Mismatch Analysis");
+
+        jButton3.setText("Generate Reports");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(208, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jButton2)
+                .addGap(30, 30, 30)
+                .addComponent(jButton3)
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1021, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkTrade)
+                            .addComponent(checkSettlement)
+                            .addComponent(checkSellCurrency)
+                            .addComponent(checkCounterparty, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(checkBuyCurrency))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tradeDateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(2, 2, 2)
+                                                .addComponent(settlementDateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(29, 29, 29)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(tradeDateTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(settlementDateTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(buyCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(218, 218, 218))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sellCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(counterpartyBic, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(checkSG)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(checkClient)))
+                                .addGap(34, 34, 34)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(checkReference)
+                                    .addGap(7, 7, 7))
+                                .addComponent(checkBuyAmt, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(checkSellAmt, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(checkRate)
+                                    .addComponent(checkStatus))
+                                .addGap(32, 32, 32)))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(referenceTF, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(buyAmtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buyAmtTo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(sellAmtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(sellAmtTo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(statusRequest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(rateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(rateTo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(137, 137, 137)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 747, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(checkStatus)
+                                .addGap(18, 18, 18)
+                                .addComponent(checkRate)
+                                .addGap(18, 18, 18)
+                                .addComponent(checkBuyAmt)
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(40, 40, 40)
+                                        .addComponent(checkReference))
+                                    .addComponent(checkSellAmt)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(statusRequest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rateTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(buyAmtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(buyAmtTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(sellAmtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sellAmtTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(referenceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tradeDateTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkTrade)
+                            .addComponent(tradeDateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkSettlement, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(settlementDateFrom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(settlementDateTo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(buyCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(22, 22, 22)
+                                        .addComponent(sellCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(checkBuyCurrency)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(checkSellCurrency)))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(counterpartyBic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(checkCounterparty))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(checkClient)
+                                    .addComponent(checkSG))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buyCurrencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyCurrencyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buyCurrencyActionPerformed
+
+    private void counterpartyBicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_counterpartyBicActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_counterpartyBicActionPerformed
+
+    private void referenceTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_referenceTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_referenceTFActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        Date tradeFrom = tradeDateFrom.getDate();
+        Date tradeTo = tradeDateTo.getDate();
+        Date settlementFrom = settlementDateFrom.getDate();
+        Date settlementTo = settlementDateTo.getDate();
+        String counterpart = counterpartyBic.getText();
+        String reference = referenceTF.getText();
+        Double rateStart = Double.parseDouble(rateFrom.getText());
+        Double rateEnd = Double.parseDouble(rateTo.getText());
+        Double buyAmtStart = Double.parseDouble(buyAmtFrom.getText());
+        Double buyAmtEnd = Double.parseDouble(buyAmtTo.getText());
+        Double sellAmtStart = Double.parseDouble(sellAmtFrom.getText());
+        Double sellAmtEnd = Double.parseDouble(sellAmtTo.getText());
+        String buyCurrencySelected = allCurrencies[buyCurrency.getSelectedIndex()];
+        String sellCurrencySelected = allCurrencies[sellCurrency.getSelectedIndex()];
+        
+        //send query to DB
+        if(searchDatabase == null){
+            searchDatabase = new SearchDatabase();
+        }
+        
+        //prepare boolean array
+        Boolean[] checks = new Boolean[12];
+        checks[0] = checkTrade.isSelected();
+        checks[1] = checkSettlement.isSelected();
+        checks[2] = checkBuyCurrency.isSelected();
+        checks[3] = checkSellCurrency.isSelected();
+        checks[4] = checkCounterparty.isSelected();
+        checks[5] = checkStatus.isSelected();
+        checks[6] = checkRate.isSelected();
+        checks[7] = checkBuyAmt.isSelected();
+        checks[8] = checkSellAmt.isSelected();
+        checks[9] = checkReference.isSelected();
+        checks[10] = checkSG.isSelected();
+        checks[11] = checkClient.isSelected();
+        
+        Integer statusNumber = statusRequest.getSelectedIndex();
+        
+        List<MT300view> viewSG = new ArrayList<>();
+        List<MT300view> viewClient = new ArrayList<>();
+        
+        List<String> queries = searchDatabase.getSearchQueryAsString(tradeFrom, tradeTo, settlementFrom, settlementTo, buyCurrencySelected, sellCurrencySelected, buyAmtStart, buyAmtEnd, sellAmtStart, sellAmtEnd, rateStart, rateEnd, counterpart, reference, checks, statusNumber);
+        if(checks[10]){
+            viewSG = searchDatabase.executeAndReturnList(queries.get(0));
+            if(checks[11]){
+                viewClient = searchDatabase.executeAndReturnList(queries.get(1));
+            }
+        } else if (checks[11]) {
+            viewClient = searchDatabase.executeAndReturnList(queries.get(0));
+        }
+        
+        DefaultTableModel tableModel = new DefaultTableModel();
+        DefaultTableModel tableModelClient = new DefaultTableModel();
+        for(String s : columnNames){
+            tableModel.addColumn(s);
+            tableModelClient.addColumn(s);
+        }
+        if(viewSG.size() > 0){
+            for(MT300view m : viewSG){
+                tableModel.addRow(new Object[] {m.c20, m.c22A, m.c22C, m.c24D, m.c30T, m.c30V, m.c32B, m.c33B, m.c36, m.c56, m.c57A, m.c57D, m.c58A, m.c77H, m.c82A, m.c87A, MATCH[m.Status]});
+            }            
+        }
+        if(viewClient.size() > 0){
+            for(MT300view m : viewClient){
+                tableModelClient.addRow(new Object[] {m.c20, m.c22A, m.c22C, m.c24D, m.c30T, m.c30V, m.c32B, m.c33B, m.c36, m.c56, m.c57A, m.c57D, m.c58A, m.c77H, m.c82A, m.c87A, MATCH[m.Status]});
+            }            
+        }
+        tableSG.setModel(tableModel);
+        tableClient.setModel(tableModelClient);
+        
+            
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void buyAmtFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyAmtFromActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buyAmtFromActionPerformed
+
+    private void buyAmtFromFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buyAmtFromFocusLost
+        // TODO add your handling code here:
+        if(buyAmtFrom.getText().equalsIgnoreCase(""))
+            buyAmtFrom.setText("0");
+    }//GEN-LAST:event_buyAmtFromFocusLost
+
+    private void buyAmtToFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buyAmtToFocusLost
+        // TODO add your handling code here:
+        if(buyAmtTo.getText().equalsIgnoreCase(""))
+            buyAmtTo.setText("0");
+    }//GEN-LAST:event_buyAmtToFocusLost
+
+    private void checkSGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkSGActionPerformed
+
+    private void tableSGMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSGMouseReleased
+        // TODO add your handling code here:
+        TableModel tableModel = tableSG.getModel();
+        String sg20 = (String) tableModel.getValueAt(tableSG.getSelectedRow(),0);
+        List<String> list = searchDatabase.getMisMatchedClients(sg20);
+        for(String s : list){
+        
+        }
+    }//GEN-LAST:event_tableSGMouseReleased
+
+    private void cl20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cl20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cl20ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +764,79 @@ public class SwiftGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField buyAmtFrom;
+    private javax.swing.JTextField buyAmtTo;
+    private javax.swing.JComboBox<String> buyCurrency;
+    private javax.swing.JCheckBox checkBuyAmt;
+    private javax.swing.JCheckBox checkBuyCurrency;
+    private javax.swing.JCheckBox checkClient;
+    private javax.swing.JCheckBox checkCounterparty;
+    private javax.swing.JCheckBox checkRate;
+    private javax.swing.JCheckBox checkReference;
+    private javax.swing.JCheckBox checkSG;
+    private javax.swing.JCheckBox checkSellAmt;
+    private javax.swing.JCheckBox checkSellCurrency;
+    private javax.swing.JCheckBox checkSettlement;
+    private javax.swing.JCheckBox checkStatus;
+    private javax.swing.JCheckBox checkTrade;
+    private javax.swing.JTextField cl20;
+    private javax.swing.JTextField cl21;
+    private javax.swing.JTextField cl22a;
+    private javax.swing.JTextField cl30t;
+    private javax.swing.JTextField cl30v;
+    private javax.swing.JTextField cl32b;
+    private javax.swing.JTextField cl33b;
+    private javax.swing.JTextField cl36;
+    private javax.swing.JTextField cl77h;
+    private javax.swing.JTextField cl82a;
+    private javax.swing.JTextField cl87a;
+    private javax.swing.JComboBox<String> client20Values;
+    private javax.swing.JTextField counterpartyBic;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JFrame mismatchFrame;
+    private javax.swing.JTextField rateFrom;
+    private javax.swing.JTextField rateTo;
+    private javax.swing.JTextField referenceTF;
+    private javax.swing.JTextField sellAmtFrom;
+    private javax.swing.JTextField sellAmtTo;
+    private javax.swing.JComboBox<String> sellCurrency;
+    private com.toedter.calendar.JDateChooser settlementDateFrom;
+    private com.toedter.calendar.JDateChooser settlementDateTo;
+    private javax.swing.JTextField sg20;
+    private javax.swing.JTextField sg21;
+    private javax.swing.JTextField sg22a;
+    private javax.swing.JTextField sg30T;
+    private javax.swing.JTextField sg30v;
+    private javax.swing.JTextField sg32b;
+    private javax.swing.JTextField sg33b;
+    private javax.swing.JTextField sg36;
+    private javax.swing.JTextField sg77h;
+    private javax.swing.JTextField sg82a;
+    private javax.swing.JTextField sg87a;
+    private javax.swing.JComboBox<String> statusRequest;
+    private javax.swing.JTable tableClient;
+    private javax.swing.JTable tableSG;
+    private com.toedter.calendar.JDateChooser tradeDateFrom;
+    private com.toedter.calendar.JDateChooser tradeDateTo;
     // End of variables declaration//GEN-END:variables
 }
