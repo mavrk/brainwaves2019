@@ -199,10 +199,13 @@ public class SearchDatabase {
         try {
             Connection con = ConnectionHelper.getConnection();
             Statement stm = con.createStatement();
-            String query = "INSERT INTO `mismatched_deals`(`SG:20`, `Client:20`) SELECT c.`:20`, s.`:20` from deals_from_txt_client as c, deals_from_txt as s WHERE ((s.`:82A`  =c.`:87A`) AND (s.`:87A` = c.`:82A`) AND (s.`:77H` = c.`:77H`) AND (s.`:30T` = c.`:30T`) AND (s.`:30V` = c.`:30V`) AND (s.`:36` != c.`:36`) AND (s.`:32B` = c.`:33B`) AND (s.`:33B` != c.`:32B`))";
+            String query = "INSERT INTO `mismatched_deals`(`SG:20`, `Client:20`) SELECT s.`:20`, c.`:20` from deals_from_txt_client as c, deals_from_txt as s WHERE ((s.`:82A`  =c.`:87A`) AND (s.`:87A` = c.`:82A`) AND (s.`:77H` = c.`:77H`) AND (s.`:30T` = c.`:30T`) AND (s.`:30V` = c.`:30V`) AND (s.`:36` != c.`:36`) AND (s.`:32B` = c.`:33B`) AND (s.`:33B` != c.`:32B`))";
             stm.execute(query);
-            query = "INSERT INTO `mismatched_deals`(`SG:20`, `Client:20`) SELECT c.`:20`, s.`:20` from deals_from_txt_client as c, deals_from_txt as s WHERE ((s.`:82A`  =c.`:87A`) AND (s.`:87A` = c.`:82A`) AND (s.`:77H` = c.`:77H`) AND (s.`:30T` = c.`:30T`) AND (s.`:30V` = c.`:30V`) AND (s.`:36` =c.`:36`) AND (s.`:32B` != c.`:33B`) AND (s.`:33B` != c.`:32B`))";
+            query = "INSERT INTO `mismatched_deals`(`SG:20`, `Client:20`) SELECT s.`:20`, c.`:20` from deals_from_txt_client as c, deals_from_txt as s WHERE ((s.`:82A`  =c.`:87A`) AND (s.`:87A` = c.`:82A`) AND (s.`:77H` = c.`:77H`) AND (s.`:30T` = c.`:30T`) AND (s.`:30V` = c.`:30V`) AND (s.`:36` =c.`:36`) AND (s.`:32B` != c.`:33B`) AND (s.`:33B` != c.`:32B`))";
             stm = con.createStatement();
+            stm.execute(query);
+            stm = con.createStatement();
+            query = "INSERT INTO `mismatched_deals`(`SG:20`, `Client:20`) SELECT c.`:20`, s.`:20` from deals_from_txt_client as c, deals_from_txt as s WHERE ((s.`:82A` =c.`:87A`) AND (s.`:87A` = c.`:82A`) AND (s.`:77H` = c.`:77H`) AND (s.`:30T` = c.`:30T`) AND (s.`:30V` != c.`:30V`) AND (s.`:36` = c.`:36`))";
             stm.execute(query);
         } catch (Exception e){
         
@@ -224,5 +227,84 @@ public class SearchDatabase {
         
         }
         return list;
+    }
+    
+    public MT300view getMTView(boolean isSg, String field20){
+        try {
+            Connection con = ConnectionHelper.getConnection();
+            Statement stm = con.createStatement();
+            String query = "SELECT * from deals_from_txt" + (isSg ? "" : "_client ") + " WHERE `:20` = '" + field20 + "';";
+            System.out.println(query);
+            ResultSet rs = stm.executeQuery(query);
+            while(rs.next()){
+                MT300view mt = new MT300view(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), ""+rs.getDate(5), ""+rs.getDate(6)
+                        , rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), 
+                        rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getString(18), rs.getDouble(19), rs.getDouble(20),
+                rs.getInt(21));
+                
+                return mt;
+            }
+        } catch (Exception e){
+        
+        }
+        return null;
+    }
+    
+    public void updateStatusOfMismatch(){
+        try {
+            Connection con = ConnectionHelper.getConnection();
+            Connection con2 = ConnectionHelper.getConnection();
+            Statement stm2 = con2.createStatement();
+            Statement stm = con.createStatement();
+            String query = "SELECT `SG:20` from mismatched_deals";
+            ResultSet rs = stm.executeQuery(query);
+            while(rs.next()){
+                String query2 = "UPDATE deals_from_txt SET STATUS = '2' WHERE `:20` = '" + rs.getString(1) + "';";
+                stm2.execute(query2);
+            }
+            
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void sendForReview(String sg20, String client20, String comments){
+        try {
+            Connection con = ConnectionHelper.getConnection();
+            Statement stm = con.createStatement();
+            String query = "INSERT into underreview_deals (`SG:20`, `Client:20`, `Comments`) VALUES ('%s', '%s', '%s');";
+            query = String.format(query, sg20, client20, comments);
+            stm.execute(query);
+            System.out.println(query);
+            stm.close();
+            con.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public List<Object[]> getReviewItems(){
+        try {
+            Connection con = ConnectionHelper.getConnection();
+            Statement stm = con.createStatement();
+            String query = "SELECT * from underreview_deals;";
+            ResultSet rs = stm.executeQuery(query);
+            List<Object[]> list = new ArrayList();
+            while(rs.next()){
+                Object[] objArr = new Object[4];
+                objArr[0] = rs.getString(1);
+                objArr[1] = rs.getString(2);
+                objArr[2] = rs.getString(3);
+                objArr[3] = rs.getDate(4);
+                list.add(objArr);
+            }
+            stm.close();
+            con.close();
+            return list;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
+        return null;
     }
 }

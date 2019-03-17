@@ -1,4 +1,5 @@
 com\prowidesoftware\swift\utils\AckMessageComparator.class
+com\mavrk\brainwaves\SwiftGUI$12.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT510$SequenceB.class
 com\prowidesoftware\swift\model\field\Field32J.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT542$SequenceD.class
@@ -81,6 +82,7 @@ com\prowidesoftware\swift\model\mt\mt6xx\MT620$SequenceC.class
 com\prowidesoftware\swift\model\field\Field140.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT502$SequenceE.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT518$1.class
+com\mavrk\brainwaves\SwiftGUI$17.class
 com\prowidesoftware\swift\model\field\Field17V.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT500$SequenceC1.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT515$1.class
@@ -828,6 +830,7 @@ com\prowidesoftware\swift\model\mt\mt6xx\MT644.class
 com\prowidesoftware\swift\model\field\Field37S.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT380$SequenceA1.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT396.class
+com\mavrk\brainwaves\SwiftGUI$21.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT569$SequenceC1a1A.class
 com\prowidesoftware\swift\model\mt\mt2xx\MT203$SequenceA.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT575$SequenceA.class
@@ -836,6 +839,7 @@ com\prowidesoftware\swift\model\mt\mt3xx\MT304$SequenceE.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT321.class
 com\prowidesoftware\swift\model\mt\mt6xx\MT643.class
 com\prowidesoftware\swift\model\field\Field27.class
+com\mavrk\brainwaves\SwiftGUI$22.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT575$SequenceB1a4.class
 com\prowidesoftware\swift\model\field\Field132.class
 com\prowidesoftware\swift\model\field\Field90F.class
@@ -1006,6 +1010,7 @@ com\prowidesoftware\swift\model\mt\mt3xx\MT381$1.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT340$SequenceG1a1.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT330$SequenceH.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT586$SequenceF.class
+com\mavrk\brainwaves\SwiftGUI$20.class
 com\prowidesoftware\swift\model\field\Field57D.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT546$SequenceE3.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT340$SequenceF.class
@@ -1111,6 +1116,7 @@ com\prowidesoftware\swift\model\mt\mt5xx\MT508$SequenceB1.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT568.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT530.class
 com\prowidesoftware\swift\model\field\Field50B.class
+com\mavrk\brainwaves\SwiftGUI$11.class
 com\prowidesoftware\swift\model\mt\mt6xx\MT601$SequenceA.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT300$SequenceB.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT540$SequenceB.class
@@ -1186,6 +1192,7 @@ com\prowidesoftware\swift\model\mt\mt5xx\MT502$SequenceD.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT518$SequenceC2.class
 com\prowidesoftware\swift\model\mt\mt7xx\MT798_793.class
 com\prowidesoftware\swift\model\mt\mt4xx\MT455.class
+com\mavrk\brainwaves\SwiftGUI$18.class
 com\prowidesoftware\swift\model\field\Field54A.class
 com\prowidesoftware\swift\model\field\Field39A.class
 com\prowidesoftware\swift\model\field\Field35A.class
@@ -1214,6 +1221,7 @@ com\prowidesoftware\swift\model\field\Field19.class
 com\prowidesoftware\swift\model\field\Field35F.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT502$SequenceC1.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT364.class
+com\mavrk\brainwaves\SwiftGUI$13.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT307$SequenceB.class
 com\prowidesoftware\swift\model\mt\mt4xx\MT450.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT509$SequenceB.class
@@ -1254,6 +1262,7 @@ com\prowidesoftware\swift\model\field\Field32D.class
 com\prowidesoftware\swift\model\field\Field141.class
 com\prowidesoftware\swift\model\field\Field83J.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT578$SequenceA.class
+com\mavrk\brainwaves\SwiftGUI$16.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT586.class
 com\prowidesoftware\swift\model\field\Field54D.class
 com\prowidesoftware\swift\model\mt\mt6xx\MT671$SequenceA.class
@@ -1439,6 +1448,7 @@ com\prowidesoftware\swift\model\mt\mt5xx\MT506$SequenceB1.class
 com\prowidesoftware\swift\model\field\Field14J.class
 com\prowidesoftware\swift\model\field\Field32C.class
 com\prowidesoftware\swift\model\field\CurrencyContainer.class
+com\mavrk\brainwaves\SwiftGUI$19.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT502$SequenceC.class
 com\prowidesoftware\swift\model\field\Field32Q.class
 com\prowidesoftware\swift\model\field\Field332.class
@@ -1517,6 +1527,7 @@ com\prowidesoftware\swift\model\mt\mt6xx\MT609$Sequence_1.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT501$SequenceE.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT513$SequenceE.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT330$SequenceA.class
+com\mavrk\brainwaves\SwiftGUI$15.class
 com\prowidesoftware\swift\model\field\Field32M.class
 com\prowidesoftware\swift\model\field\Field68A.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT514$SequenceB2.class
@@ -1537,6 +1548,7 @@ com\prowidesoftware\swift\model\mx\MxWrite.class
 com\prowidesoftware\swift\model\field\Field17Y.class
 com\prowidesoftware\swift\model\field\Field95U.class
 com\prowidesoftware\swift\model\mt\mt5xx\MT505$1.class
+com\mavrk\brainwaves\SwiftGUI$14.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT370.class
 com\prowidesoftware\swift\model\mt\mt1xx\MT102_STP$SequenceA.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT300$SequenceE1a.class
@@ -1600,6 +1612,7 @@ com\prowidesoftware\swift\model\mt\mt5xx\MT517.class
 com\prowidesoftware\swift\model\mt\mt3xx\MT304$SequenceC1.class
 com\prowidesoftware\swift\model\mt\mt6xx\MT620$SequenceG1.class
 com\prowidesoftware\swift\model\field\Field33F.class
+com\mavrk\brainwaves\SwiftGUI$10.class
 com\prowidesoftware\swift\model\mt\mt8xx\MT896.class
 com\prowidesoftware\swift\model\mx\AbstractMX.class
 com\prowidesoftware\swift\model\field\Field83D.class
